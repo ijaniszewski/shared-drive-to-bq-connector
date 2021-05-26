@@ -1,0 +1,5 @@
+autopep8==1.5.4
+google-cloud-bigquery==2.6.2
+google-cloud-storage==1.35.0
+gcsfs==0.7.1
+python-dotenv==0.17.1
