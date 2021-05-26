@@ -1,2 +1,9 @@
 # shared-drive-to-bq-connector
-Connector to moving data from Google Shared Drive to BigQuery
+Connector for moving data from Google Shared Drive to BigQuery
+
+
+Please add path to your credentials to `.env.example`
+```
+GOOGLE_APPLICATION_CREDENTIALS=path/to/your/credentials.json
+```
+and save the file as `.env`
