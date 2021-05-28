@@ -10,7 +10,7 @@ from google.cloud import bigquery, storage
 
 @dataclass
 class StorageConnector:
-    '''Connector to move data from Google Cloud Storage to Big Query.'''
+    '''Connector moves data from Google Cloud Storage to Big Query.'''
     bucket_name: str
     project_name: str
     dataset: str
@@ -57,6 +57,7 @@ class StorageConnector:
         return table_name
 
     def upload_data_to_bq(self, blob_uri, table_name):
+        '''Load file to BQ based on Storage Blob URI.'''
         table_id = f"{self.project_name}.{self.dataset}.{table_name}"
         job_config = self.create_job_config()
         load_job = self.bq_client.load_table_from_uri(
@@ -110,14 +111,15 @@ class StorageConnector:
                     print(f"{table_name} skipped, because of error: {e}")
 
 
-data = {
-    'bucket_name': 'your_bucket',
-    'project_name': 'your_project',
-    'dataset': 'your_dataset',
-    'tables_to_skip': []
-}
+if __name__ == "__main__":
+    data = {
+        'bucket_name': 'your_bucket',
+        'project_name': 'your_project',
+        'dataset': 'your_dataset',
+        'tables_to_skip': []
+    }
 
-sc = StorageConnector(**data)
-years = ("2018", "2019", "2020")
-# LOAD FROM STORAGE ONLY FOR GIVEN YEARS
-sc.load_data_from_storage(years)
+    sc = StorageConnector(**data)
+    years = ("2018", "2019", "2020")
+    # LOAD FROM STORAGE ONLY FOR GIVEN YEARS
+    sc.load_data_from_storage(years)
