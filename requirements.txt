@@ -1,5 +1,8 @@
 autopep8==1.5.4
+google-api-python-client==2.0.2
 google-cloud-bigquery==2.6.2
 google-cloud-storage==1.35.0
 gcsfs==0.7.1
+pandas==1.2.3
 python-dotenv==0.17.1
+Unidecode==1.2.0
