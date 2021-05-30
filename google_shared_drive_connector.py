@@ -241,7 +241,7 @@ class DriveConnector:
         columns = [unidecode.unidecode(column) for column in columns]
         return columns
 
-    def get_df_from_csv_url(self, file_id, file_name, folder_name):
+    def get_df_from_file_id(self, file_id, file_name, folder_name):
         '''Download df from Drive based on file ID.'''
 
         config = configs[folder_name]
@@ -277,12 +277,11 @@ class DriveConnector:
         self.mail.send_mail(message)
 
     def upload_csv_to_bq(self, folder_name, file_name, file_id):
-        '''Get csv url, download df and upload it to Big Query.'''
+        '''Download CSV as df based on file_id and upload it to Big Query.'''
 
         print(f'Uploading, folder: {folder_name}, file: {file_name}')
-        # csv_url = f'https://drive.google.com/open?id={file_id}'
         try:
-            df = self.get_df_from_csv_url(file_id, file_name, folder_name)
+            df = self.get_df_from_file_id(file_id, file_name, folder_name)
             if df.empty:
                 raise ValueError('CSV is empty!')
         except ValueError as error:
