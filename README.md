@@ -1,4 +1,4 @@
-# shared-drive-to-bq-connector
+# Google Shared Drive to BigQuery connector
 Connector for moving data from Google Shared Drive to BigQuery
 
 
